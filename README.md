@@ -5,13 +5,13 @@ I have written a package called `bar` which depends on the `foo` package. `bar` 
 
 - [Wrapper](packages/bar/Wrapper.vue):
   - Provides an SFC.
-  - Uses the "useFoo(name)" function from the `foo` package, which passes the name down using Vue provide.
+  - Uses the "useFoo(name)" function from the `foo` package, which use [provide](https://vuejs.org/guide/components/provide-inject.html#provide) a name with `Symbol('foo')`.
 - [Foo](packages/bar/Foo.mjs):
   - Provides a JS component.
-  - Uses the "useFooContext(name)" function from the `foo` package, which obtains the foo context using Vue inject.
-  - Throws an error (`Error: Not in the Foo context`) if the foo context is not available.
+  - Uses the "useFooContext(name)" function from the `foo` package, which obtains the foo context using [inject](https://vuejs.org/guide/components/provide-inject.html#inject).
+  - Throws an error (`Error: Not in the Foo context`) if the foo context is not exist.
 
-When `bar` is imported into a Vite Vue project and Wrapper and Foo are used (see [App.vue](./packages/web/src/App.vue) for reference), the foo context cannot be read, resulting throw the error `Error: Not in the Foo context`.
+When `bar` is imported into a Vite Vue project and Wrapper and Foo are used (see [App.vue](packages/web/src/App.vue) for reference), the foo context not exist, resulting throw the error `Error: Not in the Foo context`.
 
 ## Problem Analysis
 
@@ -79,26 +79,3 @@ import.meta.hot.accept(mod => {
   }
 })
 ```
-
-
-## Start
-
-Create `foo`, `bar` packaged tar.gz file
-
-```
-pnpm run bundle
-```
-
-Install dependencies
-
-```
-pnpm install
-```
-
-Run Vite dev server with clean dep pre bundling
-
-```
-pnpm dev --force
-```
-
-Open the browser http://localhost:5173/ and open DevTools to view the console.
