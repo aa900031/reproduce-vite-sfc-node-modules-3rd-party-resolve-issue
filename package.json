@@ -1,0 +1,14 @@
+{
+  "name": "reproduce-vite-sfc-node-modules-3rd-party-resolve-issue",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+		"bundle": "cd ./packages/foo; pnpm pack; cd -; cd ./packages/bar; pnpm pack; cd -",
+    "dev": "pnpm --filter=web dev"
+  },
+  "keywords": [],
+  "author": {
+    "name": "zhong666",
+    "email": "aa900031@gmail.com"
+  }
+}

@@ -1,0 +1,27 @@
+{
+	"name": "foo",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./index.mjs"
+		}
+	},
+	"module": "index.mjs",
+	"dependencies": {
+		"vue-demi": "latest"
+	},
+	"peerDependencies": {
+		"@vue/composition-api": "^1.0.0-rc.1",
+		"vue": "^2.0.0 || >=3.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@vue/composition-api": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"vue": "^3.0.0"
+	}
+}
